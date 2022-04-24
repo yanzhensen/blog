@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2022/04/24/hello-world/"/>
+      <url>/2022/04/24/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo搭建博客</title>
+      <link href="/2022/02/15/hexo-init/"/>
+      <url>/2022/02/15/hexo-init/</url>
+      
+        <content type="html"><![CDATA[<p> Hexo 是快速、简洁且高效的博客框架</p><blockquote><p>Hexo官网:<a href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p></blockquote><h2 id="Hexo搭建步骤"><a href="#Hexo搭建步骤" class="headerlink" title="Hexo搭建步骤"></a>Hexo搭建步骤</h2><p> 1.安装Git<br> 2.安装Node.js<br> 3.安装Hexo<br> 4.Gitee创建个人仓库</p><h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="1-GIT"><a href="#1-GIT" class="headerlink" title="1.GIT"></a>1.GIT</h3><blockquote><p>Git下载地址:<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>Git安装教程 :<a href="https://blog.csdn.net/sishen47k/article/details/80211002">https://blog.csdn.net/sishen47k/article/details/80211002</a></p></blockquote><h3 id="2-Node-js"><a href="#2-Node-js" class="headerlink" title="2.Node.js"></a>2.Node.js</h3><blockquote><p>Node.js下载地址:<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br>Node.js安装教程:<a href="https://www.runoob.com/nodejs/nodejs-install-setup.html">https://www.runoob.com/nodejs/nodejs-install-setup.html</a></p></blockquote><h3 id="2-Hexo"><a href="#2-Hexo" class="headerlink" title="2.Hexo"></a>2.Hexo</h3><ul><li><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p><blockquote><p>npm install -g hexo-cli</p></blockquote></li><li><p>创建一个文件夹hexo</p><blockquote><p>mkdir hexo</p></blockquote></li><li><p>进入hexo</p><blockquote><p>cd hexo</p></blockquote></li><li><p>初始化一下hexo</p><blockquote><p>hexo init</p></blockquote></li><li><p>安装依赖</p><blockquote><p>npm install</p></blockquote></li><li><p>配置认证信息</p><blockquote><p>hexo d -fg</p></blockquote></li><li><p>开始部署 博客推到远端</p><blockquote><p>hexo-d</p></blockquote></li><li><p>启动服务</p><blockquote><p>hexo serve</p></blockquote></li><li><p>文件夹出现的名称</p></li></ul><table><thead><tr><th align="left">文件名称</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">node_modules</td><td align="left">依赖包</td></tr><tr><td align="left">public</td><td align="left">存放生成的页面</td></tr><tr><td align="left">scaffolds</td><td align="left">生成文章的一些模板</td></tr><tr><td align="left">source</td><td align="left">用来存放你的文章</td></tr><tr><td align="left">themes</td><td align="left">主题</td></tr><tr><td align="left">_config.yml</td><td align="left">博客的配置文件</td></tr></tbody></table><h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><ul><li>模板使用：<a href="https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git">https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git</a> </li><li>安装到themes目录下<blockquote><p>cd themes<br>git clone <a href="https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git">https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git</a></p></blockquote></li><li>修改 Hexo 根目录下的 _config.yml 的 theme 的值：theme: hexo-theme-matery</li></ul><p>安装完后即可用<code><strong>hexo s</strong></code>在本地启动，然后访问<code><strong>localhost:4000</strong></code>查看你的博客了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
