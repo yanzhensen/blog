@@ -4,8 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo搭建博客, Hexo">
-    <meta name="description" content="这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要">
+    <meta name="keywords" content="maven-unrecognized, Hexo">
+    <meta name="description" content="maven无法识别本地jar以前用的私服，现在不使用了，更改了maven 的 setting 设置，导致本地有jar但是maven无法引入；
+可以先执行第三条，不行再执行其他的
+1.注意事项和位置创建bat 文件
+
+.bat文件要和仓库在同">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +23,7 @@
 
     
 
-    <title>Hexo搭建博客 | Hexo</title>
+    <title>maven-unrecognized | Hexo</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
@@ -314,7 +318,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo搭建博客</h1>
+                    <h1 class="description center-align post-title">maven-unrecognized</h1>
                 </div>
             </div>
         </div>
@@ -428,25 +432,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/blog/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/blog/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                博客
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-02-15
+                    2022-07-11
                 </div>
                 
 
@@ -479,107 +470,38 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p> Hexo 是快速、简洁且高效的博客框架</p>
-<blockquote>
-<p>Hexo官网:<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
-</blockquote>
-<h2 id="Hexo搭建步骤"><a href="#Hexo搭建步骤" class="headerlink" title="Hexo搭建步骤"></a>Hexo搭建步骤</h2><p> 1.安装Git<br> 2.安装Node.js<br> 3.安装Hexo<br> 4.Gitee创建个人仓库</p>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="1-GIT"><a href="#1-GIT" class="headerlink" title="1.GIT"></a>1.GIT</h3><blockquote>
-<p>Git下载地址:<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>Git安装教程 :<a target="_blank" rel="noopener" href="https://blog.csdn.net/sishen47k/article/details/80211002">https://blog.csdn.net/sishen47k/article/details/80211002</a></p>
-</blockquote>
-<h3 id="2-Node-js"><a href="#2-Node-js" class="headerlink" title="2.Node.js"></a>2.Node.js</h3><blockquote>
-<p>Node.js下载地址:<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br>Node.js安装教程:<a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-install-setup.html">https://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
-</blockquote>
-<h3 id="2-Hexo"><a href="#2-Hexo" class="headerlink" title="2.Hexo"></a>2.Hexo</h3><ul>
-<li><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
-<blockquote>
-<p>npm install -g hexo-cli</p>
-</blockquote>
-</li>
-<li><p>安装hexo-deployer-git，跟git交互</p>
-<blockquote>
-<p>npm install hexo-deployer-git –save</p>
-</blockquote>
-</li>
-<li><p>创建一个文件夹hexo</p>
-<blockquote>
-<p>mkdir hexo</p>
-</blockquote>
-</li>
-<li><p>进入hexo</p>
-<blockquote>
-<p>cd hexo</p>
-</blockquote>
-</li>
-<li><p>初始化一下hexo</p>
-<blockquote>
-<p>hexo init</p>
-</blockquote>
-</li>
-<li><p>安装依赖</p>
-<blockquote>
-<p>npm install</p>
-</blockquote>
-</li>
-<li><p>配置认证信息</p>
-<blockquote>
-<p>hexo d -fg</p>
-</blockquote>
-</li>
-<li><p>开始部署 博客推到远端</p>
-<blockquote>
-<p>hexo g -d</p>
-</blockquote>
-</li>
-<li><p>启动服务</p>
-<blockquote>
-<p>hexo serve</p>
-</blockquote>
-</li>
-<li><p>文件夹出现的名称</p>
-</li>
+                <h1 id="maven无法识别本地jar"><a href="#maven无法识别本地jar" class="headerlink" title="maven无法识别本地jar"></a>maven无法识别本地jar</h1><p>以前用的私服，现在不使用了，更改了maven 的 setting 设置，导致本地有jar但是maven无法引入；</p>
+<p>可以先执行第三条，不行再执行其他的</p>
+<h2 id="1-注意事项和位置"><a href="#1-注意事项和位置" class="headerlink" title="1.注意事项和位置"></a>1.注意事项和位置</h2><p>创建bat 文件</p>
+<ul>
+<li><code>.bat文件要和仓库在同一平级目录</code></li>
+<li><code>REPOSITORY_PATH要改成你自己仓库的地址</code></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th align="left">文件名称</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">node_modules</td>
-<td align="left">依赖包</td>
-</tr>
-<tr>
-<td align="left">public</td>
-<td align="left">存放生成的页面</td>
-</tr>
-<tr>
-<td align="left">scaffolds</td>
-<td align="left">生成文章的一些模板</td>
-</tr>
-<tr>
-<td align="left">source</td>
-<td align="left">用来存放你的文章</td>
-</tr>
-<tr>
-<td align="left">themes</td>
-<td align="left">主题</td>
-</tr>
-<tr>
-<td align="left">_config.yml</td>
-<td align="left">博客的配置文件</td>
-</tr>
-</tbody></table>
-<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><ul>
-<li>模板使用：<a target="_blank" rel="noopener" href="https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git">https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git</a> </li>
-<li>安装到themes目录下<blockquote>
-<p>cd themes<br>git clone <a target="_blank" rel="noopener" href="https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git">https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git</a></p>
-</blockquote>
-</li>
-<li>修改 Hexo 根目录下的 _config.yml 的 theme 的值：theme: hexo-theme-matery</li>
-</ul>
-<p>安装完后即可用<code><strong>hexo s</strong></code>在本地启动，然后访问<code><strong>localhost:4000</strong></code>查看你的博客了</p>
+<h2 id="2、删除-lastUpdated文件-失败的jar包"><a href="#2、删除-lastUpdated文件-失败的jar包" class="headerlink" title="2、删除.lastUpdated文件(失败的jar包)"></a>2、删除.lastUpdated文件(失败的jar包)</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">set</span> <span class="token assign-left variable">REPOSITORY_PATH</span><span class="token operator">=</span>D:<span class="token punctuation">\</span>maven<span class="token punctuation">\</span>repository
+<span class="token keyword">for</span> /f <span class="token string">"delims="</span> %%i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'dir /b /s "%REPOSITORY_PATH%\*lastUpdated*"'</span><span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>
+    del /s /q %%i
+<span class="token punctuation">)</span>
+pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="3、删除-remote-repositories文件（主要）"><a href="#3、删除-remote-repositories文件（主要）" class="headerlink" title="3、删除_remote.repositories文件（主要）"></a>3、删除_remote.repositories文件（主要）</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">set</span> <span class="token assign-left variable">REPOSITORY_PATH</span><span class="token operator">=</span>D:<span class="token punctuation">\</span>maven<span class="token punctuation">\</span>repository
+rem 正在搜索<span class="token punctuation">..</span>.
+<span class="token keyword">for</span> /f <span class="token string">"delims="</span> %%i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'dir /b /s "%REPOSITORY_PATH%\*_remote.repositories*"'</span><span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>
+    del /s /q %%i
+<span class="token punctuation">)</span>
+rem 搜索完毕
+pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="4、删除-maven-repositories文件-没影响可留"><a href="#4、删除-maven-repositories文件-没影响可留" class="headerlink" title="4、删除_maven.repositories文件(没影响可留)"></a>4、删除_maven.repositories文件(没影响可留)</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">set</span> <span class="token assign-left variable">REPOSITORY_PATH</span><span class="token operator">=</span>D:<span class="token punctuation">\</span>maven<span class="token punctuation">\</span>repository
+rem 正在搜索<span class="token punctuation">..</span>.
+<span class="token keyword">for</span> /f <span class="token string">"delims="</span> %%i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'dir /b /s "%REPOSITORY_PATH%\*_maven.repositories*"'</span><span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>
+    del /s /q %%i
+<span class="token punctuation">)</span>
+rem 搜索完毕
+pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
                 
             </div>
@@ -606,7 +528,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/blog/2022/02/15/hexo-init/">http://example.com/blog/2022/02/15/hexo-init/</a>
+                    <a href="http://example.com/blog/2022/07/11/maven-unrecognized/">http://example.com/blog/2022/07/11/maven-unrecognized/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -643,11 +565,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/blog/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -819,17 +737,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/blog/2022/04/24/hello-world/">
+                <a href="/blog/2022/07/11/maven-unrecognized/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/blog/medias/featureimages/17.jpg" class="responsive-img" alt="maven-unrecognized">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">maven-unrecognized</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -839,9 +758,47 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Sam
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/2022/04/28/yum%E5%AE%89%E8%A3%85mysql8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/5.jpg" class="responsive-img" alt="yum安装mysql8">
+                        
+                        <span class="card-title">yum安装mysql8</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -851,52 +808,10 @@
                     </div>
                 </div>
                 
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/blog/2022/02/15/hexo-init/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/blog/medias/featureimages/17.jpg" class="responsive-img" alt="Hexo搭建博客">
-                        
-                        <span class="card-title">Hexo搭建博客</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/blog/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/blog/tags/%E5%AE%89%E8%A3%85/">
+                        <span class="chip bg-color">安装</span>
                     </a>
                     
                 </div>
