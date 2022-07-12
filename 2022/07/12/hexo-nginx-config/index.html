@@ -4,12 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="maven无法识别本地jar, Hexo">
-    <meta name="description" content="maven无法识别本地jar以前用的私服，现在不使用了，更改了maven 的 setting 设置，导致本地有jar但是maven无法引入；
-可以先执行第三条，不行再执行其他的
-1.注意事项和位置创建bat 文件
-
-.bat文件要和仓库在同">
+    <meta name="keywords" content="hexo配置nginx代理页面, Hexo">
+    <meta name="description" content="hexo配置nginx代理页面用hexo生成页面
+修改hexo配置_config.yml的root资源目录根路径  当前hexo是在/home/hexo下
+vim _config.yml
+#将root属性的 / 改成 /blog  对应ng">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +22,7 @@
 
     
 
-    <title>maven无法识别本地jar | Hexo</title>
+    <title>hexo配置nginx代理页面 | Hexo</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
@@ -313,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">maven无法识别本地jar</h1>
+                    <h1 class="description center-align post-title">hexo配置nginx代理页面</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +433,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/java/">
-                                <span class="chip bg-color">java</span>
+                            <a href="/blog/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
                             </a>
                         
                     </div>
@@ -450,7 +449,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-07-11
+                    2022-07-12
                 </div>
                 
 
@@ -474,38 +473,48 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="maven无法识别本地jar"><a href="#maven无法识别本地jar" class="headerlink" title="maven无法识别本地jar"></a>maven无法识别本地jar</h1><p>以前用的私服，现在不使用了，更改了maven 的 setting 设置，导致本地有jar但是maven无法引入；</p>
-<p>可以先执行第三条，不行再执行其他的</p>
-<h2 id="1-注意事项和位置"><a href="#1-注意事项和位置" class="headerlink" title="1.注意事项和位置"></a>1.注意事项和位置</h2><p>创建bat 文件</p>
-<ul>
-<li><code>.bat文件要和仓库在同一平级目录</code></li>
-<li><code>REPOSITORY_PATH要改成你自己仓库的地址</code></li>
-</ul>
-<h2 id="2、删除-lastUpdated文件-失败的jar包"><a href="#2、删除-lastUpdated文件-失败的jar包" class="headerlink" title="2、删除.lastUpdated文件(失败的jar包)"></a>2、删除.lastUpdated文件(失败的jar包)</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">set</span> <span class="token assign-left variable">REPOSITORY_PATH</span><span class="token operator">=</span>D:<span class="token punctuation">\</span>maven<span class="token punctuation">\</span>repository
-<span class="token keyword">for</span> /f <span class="token string">"delims="</span> %%i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'dir /b /s "%REPOSITORY_PATH%\*lastUpdated*"'</span><span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>
-    del /s /q %%i
-<span class="token punctuation">)</span>
-pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h2 id="3、删除-remote-repositories文件（主要）"><a href="#3、删除-remote-repositories文件（主要）" class="headerlink" title="3、删除_remote.repositories文件（主要）"></a>3、删除_remote.repositories文件（主要）</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">set</span> <span class="token assign-left variable">REPOSITORY_PATH</span><span class="token operator">=</span>D:<span class="token punctuation">\</span>maven<span class="token punctuation">\</span>repository
-rem 正在搜索<span class="token punctuation">..</span>.
-<span class="token keyword">for</span> /f <span class="token string">"delims="</span> %%i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'dir /b /s "%REPOSITORY_PATH%\*_remote.repositories*"'</span><span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>
-    del /s /q %%i
-<span class="token punctuation">)</span>
-rem 搜索完毕
-pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="4、删除-maven-repositories文件-没影响可留"><a href="#4、删除-maven-repositories文件-没影响可留" class="headerlink" title="4、删除_maven.repositories文件(没影响可留)"></a>4、删除_maven.repositories文件(没影响可留)</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">set</span> <span class="token assign-left variable">REPOSITORY_PATH</span><span class="token operator">=</span>D:<span class="token punctuation">\</span>maven<span class="token punctuation">\</span>repository
-rem 正在搜索<span class="token punctuation">..</span>.
-<span class="token keyword">for</span> /f <span class="token string">"delims="</span> %%i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'dir /b /s "%REPOSITORY_PATH%\*_maven.repositories*"'</span><span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>
-    del /s /q %%i
-<span class="token punctuation">)</span>
-rem 搜索完毕
-pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+                <h1 id="hexo配置nginx代理页面"><a href="#hexo配置nginx代理页面" class="headerlink" title="hexo配置nginx代理页面"></a>hexo配置nginx代理页面</h1><h3 id="用hexo生成页面"><a href="#用hexo生成页面" class="headerlink" title="用hexo生成页面"></a>用hexo生成页面</h3><ol>
+<li><p>修改hexo配置_config.yml的root资源目录根路径  当前hexo是在/home/hexo下</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">vim</span> _config.yml
+<span class="token comment">#将root属性的 / 改成 /blog  对应nginx </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>修改页面作者信息</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">vim</span> _config.yml  <span class="token comment">#根目录下的</span>
+<span class="token comment">#将author 改成 Sam </span>
+title: Hexo
+subtitle: <span class="token string">''</span>
+description: <span class="token string">''</span>
+keywords:
+author: Sam
+language: en
+timezone: <span class="token string">''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>修改matery about页面下的信息</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> themes/hexo-theme-matery
+<span class="token function">vim</span> _config.yml
+<span class="token comment">#修改socialLink下的配置</span>
+socialLink:
+  github:  https://github.com/???
+  email: ???@qq.com
+  facebook: <span class="token comment"># https://www.facebook.com/xxx</span>
+  twitter: <span class="token comment"># https://twitter.com/xxx</span>
+  qq: ???
+  weibo: <span class="token comment"># https://weibo.com/xxx</span>
+  zhihu: <span class="token comment"># https://www.zhihu.com/xxx</span>
+  rss: <span class="token boolean">true</span> <span class="token comment"># true、false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>到根目录下运行指令</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo clean    <span class="token comment">#清空原始页面</span>
+hexo g        <span class="token comment">#生成静态页面 /public</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ol>
+<h2 id="配置nginx-conf"><a href="#配置nginx-conf" class="headerlink" title="配置nginx.conf"></a>配置nginx.conf</h2><ol>
+<li><p>配置nginx.conf</p>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">location &#x2F;blog&#x2F; &#123;
+    alias  &#x2F;home&#x2F;hexo&#x2F;public&#x2F;;  #指定到hexo生成的public页面中
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>启动nginx</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">./nginx -t
+./nginx 或者 ./nginx -s reload<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ol>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>hexo生成的页面使用nginx的alias解析到绝对路径下，使用 <a href="http://ip:port/blog即可访问到！">http://ip:port/blog即可访问到！</a></p>
 
                 
             </div>
@@ -532,7 +541,7 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/blog/2022/07/11/maven-unrecognized/">http://example.com/blog/2022/07/11/maven-unrecognized/</a>
+                    <a href="http://example.com/blog/2022/07/12/hexo-nginx-config/">http://example.com/blog/2022/07/12/hexo-nginx-config/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -570,8 +579,8 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/java/">
-                                    <span class="chip bg-color">java</span>
+                                <a href="/blog/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
                                 </a>
                             
                         </div>
@@ -745,9 +754,10 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/blog/2022/07/12/hexo-nginx-config/">
                     <div class="card-image">
@@ -765,9 +775,9 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -776,6 +786,7 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -794,13 +805,13 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/2022/04/28/yum%E5%AE%89%E8%A3%85mysql8/">
+                <a href="/blog/2022/07/11/maven-unrecognized/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/5.jpg" class="responsive-img" alt="yum安装mysql8">
+                        <img src="/blog/medias/featureimages/14.jpg" class="responsive-img" alt="maven无法识别本地jar">
                         
-                        <span class="card-title">yum安装mysql8</span>
+                        <span class="card-title">maven无法识别本地jar</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -811,7 +822,7 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-11
                             </span>
                         <span class="publish-author">
                             
@@ -824,8 +835,8 @@ pause<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/%E5%AE%89%E8%A3%85/">
-                        <span class="chip bg-color">安装</span>
+                    <a href="/blog/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
                 </div>
