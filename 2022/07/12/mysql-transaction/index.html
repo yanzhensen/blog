@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo搭建博客, Sam&#39;s Blog">
-    <meta name="description" content="安装hexo使用matery模板，附带常用指令，使用gitee代码管理！">
+    <meta name="keywords" content="mysql事务, Sam&#39;s Blog">
+    <meta name="description" content="Mysql事务一、简介1、在MySQL中只有Innodb存储引擎的数据库才支持事务
+2、事务处理可以用来维护数据的完整性，保证一组数据操作，要么全部成功，要么全部失败
+3、事务主要用来管理insert，update，delete语句
+二、事">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +22,7 @@
 
     
 
-    <title>Hexo搭建博客 | Sam&#39;s Blog</title>
+    <title>mysql事务 | Sam&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
@@ -309,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo搭建博客</h1>
+                    <h1 class="description center-align post-title">mysql事务</h1>
                 </div>
             </div>
         </div>
@@ -430,23 +433,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
+                            <a href="/blog/tags/Mysql/">
+                                <span class="chip bg-color">Mysql</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/blog/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                博客
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +449,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-02-15
+                    2022-07-12
                 </div>
                 
 
@@ -479,122 +473,70 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p> Hexo 是快速、简洁且高效的博客框架</p>
-<blockquote>
-<p>Hexo官网:<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
-</blockquote>
-<h2 id="Hexo搭建步骤"><a href="#Hexo搭建步骤" class="headerlink" title="Hexo搭建步骤"></a>Hexo搭建步骤</h2><p> 1.安装Git<br> 2.安装Node.js<br> 3.安装Hexo<br> 4.Gitee创建个人仓库</p>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="1-GIT"><a href="#1-GIT" class="headerlink" title="1.GIT"></a>1.GIT</h3><blockquote>
-<p>Git下载地址:<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>Git安装教程 :<a target="_blank" rel="noopener" href="https://blog.csdn.net/sishen47k/article/details/80211002">https://blog.csdn.net/sishen47k/article/details/80211002</a></p>
-</blockquote>
-<h3 id="2-Node-js"><a href="#2-Node-js" class="headerlink" title="2.Node.js"></a>2.Node.js</h3><blockquote>
-<p>Node.js下载地址:<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br>Node.js安装教程:<a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-install-setup.html">https://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
-</blockquote>
-<h3 id="2-Hexo"><a href="#2-Hexo" class="headerlink" title="2.Hexo"></a>2.Hexo</h3><ul>
-<li><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
-<blockquote>
-<p>npm install -g hexo-cli</p>
-</blockquote>
-</li>
-<li><p>安装hexo-deployer-git，跟git交互</p>
-<blockquote>
-<p>npm install hexo-deployer-git –save</p>
-</blockquote>
-</li>
-<li><p>创建一个文件夹hexo</p>
-<blockquote>
-<p>mkdir hexo</p>
-</blockquote>
-</li>
-<li><p>进入hexo</p>
-<blockquote>
-<p>cd hexo</p>
-</blockquote>
-</li>
-<li><p>初始化一下hexo</p>
-<blockquote>
-<p>hexo init</p>
-</blockquote>
-</li>
-<li><p>安装依赖</p>
-<blockquote>
-<p>npm install</p>
-</blockquote>
-</li>
-<li><p>配置认证信息</p>
-<blockquote>
-<p>hexo d -fg</p>
-</blockquote>
-</li>
-<li><p>推送远端git</p>
-<blockquote>
-<p>hexo -d</p>
-</blockquote>
-</li>
-<li><p>开始部署博客并推到远端git 组合指令</p>
-<blockquote>
-<p>hexo g -d</p>
-</blockquote>
-</li>
-<li><p>启动服务</p>
-<blockquote>
-<p>hexo serve</p>
-</blockquote>
-</li>
-<li><p>部署生成页面</p>
-<blockquote>
-<p>hexo g</p>
-</blockquote>
-</li>
-<li><p>清除已生成的页面</p>
-<blockquote>
-<p>hexo clean</p>
-</blockquote>
-</li>
-<li><p>文件夹出现的名称</p>
-</li>
-</ul>
+                <h1 id="Mysql事务"><a href="#Mysql事务" class="headerlink" title="Mysql事务"></a>Mysql事务</h1><h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>1、在MySQL中只有Innodb存储引擎的数据库才支持事务</p>
+<p>2、事务处理可以用来维护数据的完整性，保证一组数据操作，要么全部成功，要么全部失败</p>
+<p>3、事务主要用来管理insert，update，delete语句</p>
+<h2 id="二、事务的基本要素（ACID）"><a href="#二、事务的基本要素（ACID）" class="headerlink" title="二、事务的基本要素（ACID）"></a>二、事务的基本要素（ACID）</h2><p>1、原子性（Atomicity）：事务开始后的所有操作，<strong>要么全部完成，要么全部失败</strong>,一旦在某个环节发生错误，之前执行的操作会被<strong>回滚</strong> （Rollback）到事务开始前的状态。</p>
+<p>2、一致性（Consistency）：在事务开始之前和结束之后，数据库的完整性没有被破坏。<strong>比如A向B转账，不可能A扣了钱，B却没收到。</strong></p>
+<p>3、隔离性（Isolation）：同一时间，只允许一个事务请求同一条数据，不同的事务之前彼此没有任何干扰。</p>
+<p>4、持久性（Durability）:事务完成后，事务对数据库的所有更新将被保存到数据库，不能回滚</p>
+<h2 id="三、事务的实现原理"><a href="#三、事务的实现原理" class="headerlink" title="三、事务的实现原理"></a>三、事务的实现原理</h2><p>mysql没执行一条聚聚记录一条日志</p>
+<p>1、start transaction，先记个日志，真正执行。</p>
+<h2 id="四、事务的相关指令"><a href="#四、事务的相关指令" class="headerlink" title="四、事务的相关指令"></a>四、事务的相关指令</h2><p><strong>事务的开始</strong></p>
+<p><code>begin</code>或<code>start trancaction</code>都是显式开启一个事务；</p>
+<p><strong>事务的提交</strong></p>
+<p><code>commit</code>或<code>commit work</code> 都是等价的</p>
+<p><strong>事务回滚</strong></p>
+<p><code>rollback</code>或<code>rollback word</code>也是等价的</p>
+<p><strong>示例</strong>:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">start transaction<span class="token punctuation">;</span> <span class="token comment">#开启事务 还可以用begin开启事务</span>
+UPDATE user <span class="token builtin class-name">set</span> balance <span class="token operator">=</span> balance - <span class="token number">200</span> where <span class="token function">id</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 
+UPDATE user <span class="token builtin class-name">set</span> balance <span class="token operator">=</span> balance + <span class="token number">200</span> where <span class="token function">id</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+commit<span class="token punctuation">;</span> <span class="token comment"># 提交事务，代表事务结束。更新的数据保存到数据库</span>
+
+start transaction<span class="token punctuation">;</span> <span class="token comment">#开启事务</span>
+UPDATE user <span class="token builtin class-name">set</span> balance <span class="token operator">=</span> balance - <span class="token number">200</span> where <span class="token function">id</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 
+UPDATE user <span class="token builtin class-name">set</span> balance <span class="token operator">=</span> balance + <span class="token number">200</span> where <span class="token function">id</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> rollback<span class="token punctuation">;</span> <span class="token comment"># 事务回滚，上面更新的数据将被还原到执行前</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="五、事务的并发问题"><a href="#五、事务的并发问题" class="headerlink" title="五、事务的并发问题"></a>五、事务的并发问题</h2><p>1、脏读：事务A读取了事务B更新的数据，然后B回滚操作，那么A读取到的数据是脏数据</p>
+<p>2、不可重复读：事务 A 多次读取同一数据，事务 B 在事务A多次读取的过程中，对数据作了更新并提交，导致事务A多次读取同一数据时，结果不一致。</p>
+<p>3、幻读：系统管理员A将数据库中所有学生的成绩从具体分数改为ABCDE等级，但是系统管理员B就在这个时候插入了一条具体分数的记录，当系统管理员A改结束后发现还有一条记录没有改过来，就好像发生了幻觉一样，这就叫幻读。</p>
+<p><strong>小结：不可重复读的和幻读很容易混淆，不可重复读侧重于修改，幻读侧重于新增或删除。解决不可重复读的问题只需锁住满足条件的行，解决幻读需要锁表</strong></p>
+<h2 id="六、事务的隔离级别"><a href="#六、事务的隔离级别" class="headerlink" title="六、事务的隔离级别"></a>六、事务的隔离级别</h2><p><strong>MySQL的默认隔离级别是可重复读</strong></p>
 <table>
 <thead>
 <tr>
-<th align="left">文件名称</th>
-<th align="left">描述</th>
+<th align="left">事务隔离级别</th>
+<th align="left">脏读</th>
+<th align="left">不可重复读</th>
+<th align="left">幻读</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">node_modules</td>
-<td align="left">依赖包</td>
+<td align="left">读未提交（Read Uncommitted）</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left">是</td>
 </tr>
 <tr>
-<td align="left">public</td>
-<td align="left">存放生成的页面</td>
+<td align="left">读已提交（Read Committed）</td>
+<td align="left">否</td>
+<td align="left">是</td>
+<td align="left">是</td>
 </tr>
 <tr>
-<td align="left">scaffolds</td>
-<td align="left">生成文章的一些模板</td>
+<td align="left">可重复读（Repeatable Read）</td>
+<td align="left">否</td>
+<td align="left">否</td>
+<td align="left">是</td>
 </tr>
 <tr>
-<td align="left">source</td>
-<td align="left">用来存放你的文章</td>
-</tr>
-<tr>
-<td align="left">themes</td>
-<td align="left">主题</td>
-</tr>
-<tr>
-<td align="left">_config.yml</td>
-<td align="left">博客的配置文件</td>
+<td align="left">串行化（Serializable）</td>
+<td align="left">否</td>
+<td align="left">否</td>
+<td align="left">否</td>
 </tr>
 </tbody></table>
-<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><ul>
-<li>模板使用：<a target="_blank" rel="noopener" href="https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git">https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git</a> </li>
-<li>安装到themes目录下<blockquote>
-<p>cd themes<br>git clone <a target="_blank" rel="noopener" href="https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git">https://gitee.com/mirrors_blinkfox/hexo-theme-matery.git</a></p>
-</blockquote>
-</li>
-<li>修改 Hexo 根目录下的 _config.yml 的 theme 的值：theme: hexo-theme-matery</li>
-</ul>
-<p>安装完后即可用<code><strong>hexo s</strong></code>在本地启动，然后访问<code><strong>localhost:4000</strong></code>查看你的博客了</p>
 
                 
             </div>
@@ -621,7 +563,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/blog/2022/02/15/hexo-init/">http://example.com/blog/2022/02/15/hexo-init/</a>
+                    <a href="http://example.com/blog/2022/07/12/mysql-transaction/">http://example.com/blog/2022/07/12/mysql-transaction/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -659,8 +601,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
+                                <a href="/blog/tags/Mysql/">
+                                    <span class="chip bg-color">Mysql</span>
                                 </a>
                             
                         </div>
@@ -708,17 +650,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/blog/2022/04/24/hello-world/">
+                <a href="/blog/2022/07/12/mysql-transaction/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/blog/medias/featureimages/16.jpg" class="responsive-img" alt="mysql事务">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">mysql事务</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -728,9 +671,55 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Sam
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/Mysql/">
+                        <span class="chip bg-color">Mysql</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/2022/07/12/mysql-index/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/5.jpg" class="responsive-img" alt="mysql索引">
+                        
+                        <span class="card-title">mysql索引</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -740,52 +729,10 @@
                     </div>
                 </div>
                 
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/blog/2022/02/15/hexo-init/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/blog/medias/featureimages/17.jpg" class="responsive-img" alt="Hexo搭建博客">
-                        
-                        <span class="card-title">Hexo搭建博客</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            安装hexo使用matery模板，附带常用指令，使用gitee代码管理！
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/blog/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/blog/tags/Mysql/">
+                        <span class="chip bg-color">Mysql</span>
                     </a>
                     
                 </div>
