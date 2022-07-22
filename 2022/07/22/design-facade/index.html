@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="mysql索引, Sam&#39;s Blog">
-    <meta name="description" content="Mysql索引一、什么是索引？拿汉语字典的目录页（索引）打比方，我们可以按拼音、笔画、偏旁部首等排序的目录（索引）快速查找到需要的字。
-二、索引的优缺点?优点：
-1、索引可以大大提高MySQL的检索速度。
-2、所有的MySql列类型(字段类">
+    <meta name="keywords" content="Java设计模式-外观模式, Sam&#39;s Blog">
+    <meta name="description" content="Java设计模式-外观模式什么是外观模式外观（Facade）模式又叫作门面模式，是一种通过为多个复杂的子系统提供一个一致的接口，而使这些子系统更加容易被访问的模式。该模式对外有一个统一接口，外部应用程序不用关心内部子系统的具体细节，这样会大">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +19,7 @@
 
     
 
-    <title>mysql索引 | Sam&#39;s Blog</title>
+    <title>Java设计模式-外观模式 | Sam&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
@@ -312,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">mysql索引</h1>
+                    <h1 class="description center-align post-title">Java设计模式-外观模式</h1>
                 </div>
             </div>
         </div>
@@ -433,8 +430,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/Mysql/">
-                                <span class="chip bg-color">Mysql</span>
+                            <a href="/blog/tags/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">Java设计模式</span>
                             </a>
                         
                     </div>
@@ -449,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-07-12
+                    2022-07-22
                 </div>
                 
 
@@ -473,110 +470,140 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Mysql索引"><a href="#Mysql索引" class="headerlink" title="Mysql索引"></a>Mysql索引</h1><h3 id="一、什么是索引？"><a href="#一、什么是索引？" class="headerlink" title="一、什么是索引？"></a>一、什么是索引？</h3><p>拿汉语字典的目录页（索引）打比方，我们可以按拼音、笔画、偏旁部首等排序的目录（索引）快速查找到需要的字。</p>
-<h3 id="二、索引的优缺点"><a href="#二、索引的优缺点" class="headerlink" title="二、索引的优缺点?"></a>二、索引的优缺点?</h3><p><strong>优点：</strong></p>
-<p>1、索引可以大大提高MySQL的检索速度。</p>
-<p>2、所有的MySql列类型(字段类型)都可以被索引，可以给任意字段设置索引</p>
-<p><strong>缺点：</strong></p>
-<p>1、虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存索引文件。<br>2、建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在一个大表上创建了多种组合索引，索引文件的会膨胀很快。<br>3、对于离散度较差的数据，为它建立索引就没有太大的实际效果。比如：性别字段<br>4、对于非常小的表，大部分情况下简单的全表扫描更高效。</p>
-<h3 id="三、索引的分类"><a href="#三、索引的分类" class="headerlink" title="三、索引的分类"></a>三、索引的分类</h3><h4 id="1、按列来区分："><a href="#1、按列来区分：" class="headerlink" title="1、按列来区分："></a>1、按列来区分：</h4><p><strong>索引分单列索引和复合索引。</strong></p>
-<p><strong>单列索引：</strong>即一个索引只包含单个列，一个表可以有多个单列索引，但这不是组合索引。</p>
-<p><strong>复合索引：</strong>即一个索引包含多个列。</p>
-<hr>
-<p><strong>注1：复合索引有哪些好处？</strong></p>
-<p><strong>减少开销：</strong>建一个复合索引 (Gid,Cid,SId) ，实际相当于建了 (Gid)、(Gid,Cid)、(Gid,Cid,SId) 三个索引。每多一个索引，都会增加写操作的开销和磁盘空间的开销。对于大量数据的表，使用复合索引会大大的减少开销！</p>
-<p><strong>覆盖索引：</strong><code>select Gid,Cid,SId from student where Gid =1 and Cid =2</code>。那么MySQL可以直接通过遍历索引取得数据，而无需回表，这减少了很多的随机IO操作。减少IO操作，特别的随机IO其实是DBA主要的优化策略。所以，在真正的实际应用中，覆盖索引是主要的提升性能的优化手段之一。</p>
-<p><strong>效率高：</strong>索引列越多，通过索引筛选出的数据越少。有1000W条数据的表，有如下sql:<code>select from table where Gid =1 and Cid =2 and SId =3</code>,假设假设每个条件可以筛选出10%的数据，如果只有单值索引，那么通过该索引能筛选出1000W10%=100w条数据，然后再回表从100w条数据中找到符合<code> Gid =2 and Cid = 3</code>的数据，然后再排序，再分页；如果是复合索引，通过索引筛选出1000w10% 10% *10%=1w，效率提升可想而知！</p>
-<p><strong>缺点：</strong>复合索引越多，索引列越多，则创建的索引越多，索引都是存储在磁盘里的，通过索引算法 BTree代表索引算法使用二叉树的形式来做索引的)来查找数据，的确可以极大的提高查询效率，但是与此同时增删改的同时，需要更新索引，同样是需要花时间的，并且索引所占的磁盘空间也不小。</p>
-<p><strong>建议：</strong>单表尽可能不要超过一个复合索引，单列索引不超过3个</p>
-<p><strong>注2：复合索引的注意事项</strong><br>1、<strong>最左前缀匹配原则：</strong> 非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、 like)就停止匹配，比如a = 1 and b = 2 and c &gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。<br>2、=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会 帮你优化成索引可以识别的形式。</p>
-<hr>
-<h4 id="2、按数据存储方式区分："><a href="#2、按数据存储方式区分：" class="headerlink" title="2、按数据存储方式区分："></a>2、按数据存储方式区分：</h4><p><strong>索引分聚簇索引和非聚簇索引</strong></p>
-<p><strong>聚簇索引：</strong>聚簇索引就是按照每张表的主键构造一颗B+树 。 同时叶子节点中存放的就是整张表的行记录数据，也将聚集索引的叶子节点称为数据页。 这个特性决定了索引组织表中数据也是索引的一部分，每张表只能拥有一个聚簇索引。</p>
-<hr>
-<p><strong>注</strong>：Innodb通过主键聚集数据，如果没有定义主键，innodb会选择非空的唯一索引代替。如果没有这样的索引，innodb会隐式的定义一个主键来作为聚簇索引。</p>
-<hr>
-<p><strong>非聚簇索引：</strong>聚簇索引之上创建的索引称之为非聚簇索引（也称为辅助索引）。辅助索引访问数据需要二次查找，辅助索引叶子节点存储的不再是行的物理位置，而是主键值。通过辅助索引首先找到的是主键值，再通过主键值找到数据行的数据页（这个过程叫<strong>回表</strong>）</p>
-<h4 id="3、按作用区分"><a href="#3、按作用区分" class="headerlink" title="3、按作用区分"></a>3、按作用区分</h4><p><strong>主键索引（primary key）：</strong>也简称主键，提供唯一性约束并不允许为空。一张表中只能有一个主键。被标记为自动增长的字段一定是主键，但主键不一定是自动增长。一般把主键定义在无意义的字段上（如：编号）</p>
-<p><strong>普通索引（normal）：</strong>普通索引是最基本的索引，它没有任何限制，值可以为空，仅加速查询</p>
-<p><strong>唯一索引（unique）：</strong> 唯一索引与普通索引类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一</p>
-<p><strong>全文索引（fulltext）：</strong>全文索引主要用来查找文本中的关键字，而不是直接与索引中的值相比较。fulltext索引跟其它索引大不相同，它更像是一个搜索引擎</p>
-<p><strong>空间索引（spatial）：</strong>MySQL在5.7之后的版本支持了空间索引，而且支持OpenGIS几何数据模型。这是在地理位置领域使用的一种索引，其他场景用的很少</p>
-<h3 id="四、MySQL索引失效的几种情况"><a href="#四、MySQL索引失效的几种情况" class="headerlink" title="四、MySQL索引失效的几种情况"></a>四、MySQL索引失效的几种情况</h3><p><strong>1、有or必须将or条件中的每个列都加上索引，否则索引无效;</strong></p>
-<p><strong>2、复合索引未用左列字段;</strong></p>
-<p><strong>3、like以%开头;</strong></p>
-<p><strong>4、需要类型转换;</strong></p>
-<p><strong>5、where中索引列有运算;</strong></p>
-<p><strong>6、where中索引列使用了函数;</strong></p>
-<p><strong>7、如果mysql觉得全表扫描更快时（数据少）;</strong></p>
-<h3 id="五、MySQL存储引擎InnoDB和MyISAM的区别"><a href="#五、MySQL存储引擎InnoDB和MyISAM的区别" class="headerlink" title="五、MySQL存储引擎InnoDB和MyISAM的区别"></a>五、MySQL存储引擎InnoDB和MyISAM的区别</h3><p><strong>1、介绍</strong></p>
-<ul>
-<li><strong>MyISAM：</strong>在MySQL 5.1 及之前的版本，MyISAM是默认引擎。MyISAM提供的大量的特性，包括全文索引、压缩、空间函数（GIS）等，但MyISAM并不支持事务以及行级锁，而且一个毫无疑问的缺陷是崩溃后无法安全恢复。</li>
-<li><strong>InnoDB：</strong>MySQL默认的事务型引擎，也是最重要和使用最广泛的存储引擎。它被设计成为大量的短期事务，短期事务大部分情况下是正常提交的，很少被回滚。</li>
+                <h1 id="Java设计模式-外观模式"><a href="#Java设计模式-外观模式" class="headerlink" title="Java设计模式-外观模式"></a>Java设计模式-外观模式</h1><h2 id="什么是外观模式"><a href="#什么是外观模式" class="headerlink" title="什么是外观模式"></a>什么是外观模式</h2><p>外观（Facade）模式又叫作门面模式，是一种通过为多个复杂的子系统提供一个一致的接口，而使这些子系统更加容易被访问的模式。该模式对外有一个统一接口，外部应用程序不用关心内部子系统的具体细节，这样会大大降低应用程序的复杂度，提高了程序的可维护性。</p>
+<p>外观模式的目的不是给子系统添加新的功能接口，而是为了让外部减少与子系统内多个模块的交互，松散耦合，从而让外部能够更简单地使用子系统。</p>
+<p>这点要特别注意，因为外观是当作子系统对外的接口出现的，虽然也可以在这里定义一些子系统没有的功能，但不建议这么做.外观应该是包装已有的功能，它主要负责组合已有功能来实现客户需要，而不是添加新的实现。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>【松散耦合】外观模式松散了客户端与子系统的耦合关系，让子系统内部的模块能更容易扩展和维护。</li>
+<li>【简单易用】外观模式让子系统更加易用，客户端不再需要了解子系统内部的实现，也不需要跟众多子系统内部的模块进行交互，只需要跟外观交互就可以了，相当于外观类为外部客户端使用子系统提供了一站式服务。</li>
+<li>【更好地划分访问的层次】通过合理使用Facade，可以帮助我们更好地划分访问的层次.有些方法是对系统外的，有些方法是系统内部使用的.把需要暴露给外部的功能集中到外观中，这样既方便客户端使用，也很好地隐藏了内部的细节。</li>
 </ul>
-<p><strong>2、存储结构</strong></p>
-<ul>
-<li><strong>MyISAM：</strong>每个MyISAM在磁盘上存储成三个文件。分别为：<strong>表定义文件、数据文件、索引文件。</strong></li>
-<li><strong>InnoDB：</strong>基于磁盘的资源是InnoDB表空间数据文件和它的日志文件，InnoDB 表的大小只受限于操作系统文件的大小，一般为 2GB</li>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>过多的或者是不太合理的Facade也容易让人迷惑.到底是调用Facade好呢，还是直接调用模块好.</li>
 </ul>
-<p><strong>3、事务支持</strong></p>
+<h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="facade-1.png" alt="facade-1"></p>
+<h2 id="何时使用"><a href="#何时使用" class="headerlink" title="何时使用"></a>何时使用</h2><p>建议在如下情况时选用外观模式</p>
 <ul>
-<li><strong>MyISAM：</strong>强调的是性能，每次查询具有原子性,其执行数度比InnoDB类型更快，但是不提供事务支持。</li>
-<li><strong>InnoDB：</strong>提供事务支持事务，外部键等高级数据库功能。 具有事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))型表。</li>
+<li><p>如果你希望为一个复杂的子系统提供一个简单接口的时候，可以考虑使用外观模式.使用外观对象来实现大部分客户需要的功能，从而简化客户的使用.如果想要让客户程序和抽象类的实现部分松散耦合，可以考虑使用外观模式，使用外观对象来将这个子系统与它的客户分离开来，从而提高子系统的独立性和可移植性.</p>
+</li>
+<li><p>如果构建多层结构的系统，可以考虑使用外观模式，使用外观对象作为每层的入口，这样可以简化层间调用，也可以松散层次之间的依赖关系.</p>
+</li>
 </ul>
-<p><strong>4、锁支持</strong></p>
-<ul>
-<li><strong>MyISAM：</strong> 只支持表级锁，用户在操作myisam表时，select，update，delete，insert语句都会给表自动加锁，如果加锁以后的表满足insert并发的情况下，可以在表的尾部插入新的数据。</li>
-<li><strong>InnoDB：</strong> 支持事务和行级锁，是innodb的最大特色。行锁大幅度提高了多用户并发操作的性能。但是InnoDB的行锁，只是在WHERE的主键是有效的，非主键的WHERE都会锁全表的。</li>
-</ul>
-<p><strong>5、统计行数</strong></p>
-<ul>
-<li><strong>MyISAM：</strong>用一个变量保存了整个表的行数，执行上述语句时只需要读出该变量即可，速度很快（注意不能加有任何WHERE条件）。</li>
-<li><strong>InnoDB：</strong>不保存表的具体行数，执行select count(*) from table时需要全表扫描。</li>
-</ul>
-<p><strong>6、外键支持</strong></p>
-<ul>
-<li><strong>MyISAM：</strong>不支持</li>
-<li><strong>InnoDB：</strong>支持</li>
-</ul>
-<p><strong>7、聚簇索引</strong></p>
-<ul>
-<li><strong>MyISAM：</strong>myisam不是聚集索引</li>
-<li>**InnoDB： **InnoDB是聚集索引，使用B+Tree作为索引结构，数据文件是和（主键）索引绑在一起的（表数据文件本身就是按B+Tree组织的一个索引结构），必须要有主键，通过主键索引效率很高。</li>
-</ul>
-<p><strong>8、MVVC</strong></p>
-<ul>
-<li><strong>MyISAM：</strong>不支持</li>
-<li><strong>InnoDB：</strong>支持</li>
-</ul>
-<p><strong>9、全文索引</strong></p>
-<ul>
-<li><strong>MyISAM：</strong>支持</li>
-<li><strong>InnoDB：</strong>部分版本不支持(但可以使用Sphinx插件)；</li>
-</ul>
-<h3 id="六、索引数据结构"><a href="#六、索引数据结构" class="headerlink" title="六、索引数据结构"></a>六、索引数据结构</h3><p>MySQL中最常用的为InnoDB存储引擎，而索引的数据结构最为常用和有效为B+Tree（B树）。</p>
-<p>B+树是B-树的变体，也是一种多路搜索树。B+Tree和B-Tree的区别在于：</p>
-<p>1、B+Tree只在叶子节点存数据，非叶子节点存指针和键值。</p>
-<p>2、为所有的叶子节点新增一个链指针。</p>
-<h3 id="七、explain关键字"><a href="#七、explain关键字" class="headerlink" title="七、explain关键字"></a>七、explain关键字</h3><p>explain的执行结果</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql<span class="token operator">></span> explain <span class="token keyword">select</span> * from subject where <span class="token function">id</span> <span class="token operator">=</span> <span class="token number">1</span> 
-****************************************************** 
-id: <span class="token number">1</span> //select查询的序列号，包含一组数字，表示查询中执行select子句或操作表的顺序
-select_type: SIMPLE //查询类型
-table: subject  //正在访问哪个表
-partitions: NULL  //匹配的分区
-type: const //访问的类型
-possible_keys: PRIMARY  //显示可能应用在这张表中的索引，一个或多个，但不一定实际使用到
-key: PRIMARY //实际使用到的索引，如果为NULL，则没有使用索引
-key_len: <span class="token number">4</span> //表示索引中使用的字节数，可通过该列计算查询中使用的索引的长度
-ref: const  //显示索引的哪一列被使用了，如果可能的话，是一个常数，哪些列或常量被用于查找索引列上的值
-rows: <span class="token number">1</span> //根据表统计信息及索引选用情况，大致估算出找到所需的记录所需读取的行数
-filtered: <span class="token number">100.00</span>  //查询的表行占表的百分比
-Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信息
-******************************************************<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="A模块接口"><a href="#A模块接口" class="headerlink" title="A模块接口"></a>A模块接口</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @Author: Sam
+ * @Date: 2022-07-21 10:36
+ * @Description: A模块接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AModuleApi</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">testA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="A模块接口实现类"><a href="#A模块接口实现类" class="headerlink" title="A模块接口实现类"></a>A模块接口实现类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @Author: Sam
+ * @Date: 2022-07-21 10:37
+ * @Description: 实现类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AModuleApiImpl</span> <span class="token keyword">implements</span> <span class="token class-name">AModuleApi</span><span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"现在在操作A模块里面的testA方法"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
+<h3 id="B模块接口"><a href="#B模块接口" class="headerlink" title="B模块接口"></a>B模块接口</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @Author: Sam
+ * @Date: 2022-07-21 10:36
+ * @Description: B模块接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BModuleApi</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">testB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="B模块接口实现类"><a href="#B模块接口实现类" class="headerlink" title="B模块接口实现类"></a>B模块接口实现类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @Author: Sam
+ * @Date: 2022-07-21 10:37
+ * @Description: 实现类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BModuleApiImpl</span> <span class="token keyword">implements</span> <span class="token class-name">BModuleApi</span><span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"现在在操作B模块里面的testB方法"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="C模块接口"><a href="#C模块接口" class="headerlink" title="C模块接口"></a>C模块接口</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @Author: Sam
+ * @Date: 2022-07-21 10:36
+ * @Description: C模块接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">CModuleApi</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">testC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="C模块接口实现类"><a href="#C模块接口实现类" class="headerlink" title="C模块接口实现类"></a>C模块接口实现类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @Author: Sam
+ * @Date: 2022-07-21 10:37
+ * @Description: 实现类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CModuleApiImpl</span> <span class="token keyword">implements</span> <span class="token class-name">CModuleApi</span><span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"现在在操作C模块里面的testC方法"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="外观对象"><a href="#外观对象" class="headerlink" title="外观对象"></a>外观对象</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @Author: Sam
+ * @Date: 2022-07-21 10:39
+ * @Description: 外观对象
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Facade</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token comment">/**
+     * 示意方法，满足客户需要的功能
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">AModuleApi</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AModuleApiImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">.</span><span class="token function">testA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">BModuleApi</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BModuleApiImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b<span class="token punctuation">.</span><span class="token function">testB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CModuleApi</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CModuleApiImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        c<span class="token punctuation">.</span><span class="token function">testC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="客户端调用类"><a href="#客户端调用类" class="headerlink" title="客户端调用类"></a>客户端调用类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @Author: Sam
+ * @Date: 2022-07-21 10:45
+ * @Description: 客户端
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//使用Facade</span>
+        <span class="token keyword">new</span> <span class="token class-name">Facade</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">现在在操作A模块里面的testA方法
+现在在操作B模块里面的testB方法
+现在在操作C模块里面的testC方法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是<code>外观模式</code>介绍和示例了~</p>
 
                 
             </div>
@@ -603,7 +630,7 @@ Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://106.52.164.250/blog/2022/07/12/mysql-index/">http://106.52.164.250/blog/2022/07/12/mysql-index/</a>
+                    <a href="http://106.52.164.250/blog/2022/07/22/design-facade/">http://106.52.164.250/blog/2022/07/22/design-facade/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -641,8 +668,8 @@ Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信�
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/Mysql/">
-                                    <span class="chip bg-color">Mysql</span>
+                                <a href="/blog/tags/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">Java设计模式</span>
                                 </a>
                             
                         </div>
@@ -694,13 +721,13 @@ Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信�
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/blog/2022/07/12/mysql-transaction/">
+                <a href="/blog/2022/07/22/design-adapter/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/16.jpg" class="responsive-img" alt="mysql事务">
+                        <img src="/blog/medias/featureimages/15.jpg" class="responsive-img" alt="Java设计模式-适配器模式">
                         
-                        <span class="card-title">mysql事务</span>
+                        <span class="card-title">Java设计模式-适配器模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -711,7 +738,7 @@ Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信�
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-12
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-22
                         </span>
                         <span class="publish-author">
                             
@@ -724,8 +751,8 @@ Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/Mysql/">
-                        <span class="chip bg-color">Mysql</span>
+                    <a href="/blog/tags/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">Java设计模式</span>
                     </a>
                     
                 </div>
@@ -739,13 +766,13 @@ Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信�
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/2022/07/12/hexo-nginx-config/">
+                <a href="/blog/2022/07/21/design-factory/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/11.jpg" class="responsive-img" alt="hexo配置nginx代理页面">
+                        <img src="/blog/medias/featureimages/12.jpg" class="responsive-img" alt="Java设计模式-简单工厂">
                         
-                        <span class="card-title">hexo配置nginx代理页面</span>
+                        <span class="card-title">Java设计模式-简单工厂</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -756,7 +783,7 @@ Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
                             </span>
                         <span class="publish-author">
                             
@@ -769,8 +796,8 @@ Extra: NULL  //包含不适合在其它列中显示但十分重要的额外信�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/blog/tags/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">Java设计模式</span>
                     </a>
                     
                 </div>
