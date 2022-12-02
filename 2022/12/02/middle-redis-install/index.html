@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="middle-redis-install, Sam&#39;s Blog">
+    <meta name="keywords" content="Linux超详细安装redis7.0.5教程, Sam&#39;s Blog">
     <meta name="description" content="Linux超详细安装redis7.0.5教程1. 去官网下载安装包下载地址：https://redis.io/download/
 此处选择的是：redis-7.0.5.tar.gz
 2. 上传到服务器并解压压缩包cd /usr/local
@@ -22,7 +22,7 @@
 
     
 
-    <title>middle-redis-install | Sam&#39;s Blog</title>
+    <title>Linux超详细安装redis7.0.5教程 | Sam&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">middle-redis-install</h1>
+                    <h1 class="description center-align post-title">Linux超详细安装redis7.0.5教程</h1>
                 </div>
             </div>
         </div>
@@ -458,7 +458,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    258
+                    355
                 </div>
                 
 
@@ -518,6 +518,25 @@ OK
 <span class="token number">192.168</span>.17.63:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> keys *
 <span class="token punctuation">(</span>empty array<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+
+<h3 id="8-设置服务自启"><a href="#8-设置服务自启" class="headerlink" title="8. 设置服务自启"></a>8. 设置服务自启</h3><blockquote>
+<p>vim /etc/rc.local</p>
+</blockquote>
+<p>在下方加入启动命令</p>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">#redis自启
+&#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-server &#x2F;etc&#x2F;redis.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="9-卸载redis"><a href="#9-卸载redis" class="headerlink" title="9. 卸载redis"></a>9. 卸载redis</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#删除安装目录</span>
+<span class="token function">rm</span> -rf /usr/local/redis-7.0.5
+<span class="token comment">#删除所有redis相关命令脚本</span>
+<span class="token function">rm</span> -rf /usr/bin/redis-*
+<span class="token comment">#删除/etc/redis.conf</span>
+<span class="token function">rm</span> -f /etc/redis.conf
+<span class="token comment">#移除/etc/rc.local自启 参考第8点</span>
+<span class="token function">vim</span> /etc/rc.local<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -641,9 +660,9 @@ OK
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/15.jpg" class="responsive-img" alt="middle-redis-install">
+                        <img src="/blog/medias/featureimages/12.jpg" class="responsive-img" alt="Linux超详细安装redis7.0.5教程">
                         
-                        <span class="card-title">middle-redis-install</span>
+                        <span class="card-title">Linux超详细安装redis7.0.5教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -687,9 +706,9 @@ OK
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/16.jpg" class="responsive-img" alt="java-jdk8-install">
+                        <img src="/blog/medias/featureimages/6.jpg" class="responsive-img" alt="Linux安装jdk1.8(超详细)">
                         
-                        <span class="card-title">java-jdk8-install</span>
+                        <span class="card-title">Linux安装jdk1.8(超详细)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
